@@ -17,7 +17,6 @@
           :key="'value-' + number"
         >{{ number }}</option>
       </select>
-      {{ selectedLength }}
     </div>
 
     <div>
