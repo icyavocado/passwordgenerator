@@ -4,16 +4,16 @@
 
 <script>
 export default {
-  name: "PasswordGenerator",
+  name: 'PasswordGenerator',
   data() {
     return {
-      ascii_lowercase: "abcdefghijklmnopqrstuvwxyz",
-      ascii_uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-      digits: "0123456789",
+      ascii_lowercase: 'abcdefghijklmnopqrstuvwxyz',
+      ascii_uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+      digits: '0123456789',
       pronounciation: "#$%&'()*+,-./:;<=>?@[\\]^_`{|}~",
-      regexTest: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*?]{6,}$/
+      regexTest: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*?]{6,}$/,
     };
-  }
+  },
 };
 </script>
 

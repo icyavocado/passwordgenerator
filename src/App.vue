@@ -1,21 +1,23 @@
 <template>
-  <div id="app"><PasswordGenerator /></div>
+  <div id="app">
+    <PasswordGenerator/>
+  </div>
 </template>
 
 <script>
-import PasswordGenerator from "./components/PasswordGenerator";
+import PasswordGenerator from './components/PasswordGenerator';
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
-    PasswordGenerator
-  }
+    PasswordGenerator,
+  },
 };
 </script>
 
 <style>
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
