@@ -7,7 +7,13 @@ export default {
   name: "PasswordGenerator",
   data() {
     return {
-      msg: "Welcome to Your Vue.js App"
+          ascii_lowercase = 'abcdefghijklmnopqrstuvwxyz',
+    ascii_uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+    digits = '0123456789',
+    hexdigits = '0123456789abcdefABCDEF',
+    octdigits = '01234567',
+      regexTest: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*?]{6,}$/,
+
     };
   }
 };
