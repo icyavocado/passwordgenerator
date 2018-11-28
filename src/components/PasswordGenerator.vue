@@ -1,31 +1,36 @@
 <template>
   <div class="generate">
     <div class="container">
-      <label for="passwords">Passwords</label>
-      <select name="passwords" v-model="selectedPassword">
-        <!-- eslint-disable -->
-        <option v-for="password in passwords" :key="password" :value="password">{{ password }}</option>
-      </select>
-      <button @click="regenerate()">Generate</button>
-      <button @click="copy()">Copy</button>
-      
-      <label for="password-length">Password Length:</label>
-      <select name="password-length" id="password-length" v-model="selectedLength">
-        <option
-          v-for="number in passwordLength"
-          :value="number"
-          :key="'value-' + number"
-        >{{ number }}</option>
-      </select>
-    </div>
+      <b-form inline class="mb-2">
+        <b-input-group prepend="Password" class="col-12">
+          <b-form-select :options="passwords" required v-model="selectedPassword"></b-form-select>
+          <b-input-group-append>
+            <b-button variant="danger" @click="copy()">Copy</b-button>
+            <b-button variant="danger" @click="regenerate()">Generate</b-button>
+          </b-input-group-append>
+        </b-input-group>
+      </b-form>
 
-    <div>
-      Options:
-      Allow Character
-      <div v-for="type in allowCharArray" :key="'type-' + type">
-        <input type="checkbox" :name="type" :value="type" v-model="selectedChar">
-        {{ type }}
-      </div>
+      <b-form inline class="mb-2">
+        <b-input-group prepend="Password Length" class="col-12">
+          <b-form-select :options="passwordLength" required v-model="selectedLength"></b-form-select>
+        </b-input-group>
+      </b-form>
+
+      <b-form inline class="mb-2">
+        <b-input-group prepend="Options" class="col-12">
+          <b-input-group-prepend is-text>
+            <b-form-checkbox-group v-model="selectedChar" name="options">
+              <b-form-checkbox
+                v-for="type in allowCharArray"
+                :key="'type-' + type"
+                :value="type"
+                class="mr-sm-2"
+              >{{ type }}</b-form-checkbox>
+            </b-form-checkbox-group>
+          </b-input-group-prepend>
+        </b-input-group>
+      </b-form>
 
       <textarea ref="password" id="password" class="hideTextArea" v-model="selectedPassword"></textarea>
     </div>
@@ -46,9 +51,8 @@ export default {
         'a-z': 'abcdefghijklmnopqrstuvwxyz',
         'A-Z': 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
         '0-9': '0123456789',
-        '"#$%&': "#$%&'()*+,-./:;<=>?@[\\]^_`{|}~",
+        '"#$%&': '#$%&()*+,-.:;=?@[]^_{}~',
       },
-      regexTest: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*?]{6,}$/,
     };
   },
   methods: {
@@ -113,7 +117,9 @@ export default {
         const passwords = [];
         for (let j = 0; j < this.numberofPassGenerate; j += 1) {
           let password = '';
-          const string = this.shuffle(this.pool.split('')).join('');
+          let string = this.shuffle(this.pool.split('')).join('');
+          string += this.shuffle(this.pool.split('')).join('');
+          string += this.shuffle(this.pool.split('')).join('');
           for (let i = 0; i < this.selectedLength; i += 1) {
             password += string.charAt(
               // eslint-disable-next-line
